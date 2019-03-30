@@ -29,6 +29,7 @@
 		AAB6D6A1224FD64E00D91891 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D6A0224FD64E00D91891 /* UIAlertController.swift */; };
 		AAB6D6A3224FD7FA00D91891 /* CardsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D6A2224FD7FA00D91891 /* CardsTableViewController.swift */; };
 		AAB6D6A5224FE3B200D91891 /* FormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D6A4224FE3B200D91891 /* FormController.swift */; };
+		AADECE3B2250122500DCAA52 /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADECE3A2250122500DCAA52 /* Anchor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		AAB6D6A0224FD64E00D91891 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		AAB6D6A2224FD7FA00D91891 /* CardsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsTableViewController.swift; sourceTree = "<group>"; };
 		AAB6D6A4224FE3B200D91891 /* FormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormController.swift; sourceTree = "<group>"; };
+		AADECE3A2250122500DCAA52 /* Anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anchor.swift; sourceTree = "<group>"; };
 		B600AFCCCB5EB8ADC4192479 /* Pods-HackMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackMobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HackMobile/Pods-HackMobile.debug.xcconfig"; sourceTree = "<group>"; };
 		C232EE83EFE4576A65418EBB /* Pods-HackMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackMobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-HackMobile/Pods-HackMobile.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,6 +168,7 @@
 			children = (
 				AAB6D69E224FD1DD00D91891 /* UIColorExtension.swift */,
 				AAB6D6A0224FD64E00D91891 /* UIAlertController.swift */,
+				AADECE3A2250122500DCAA52 /* Anchor.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-HackMobile/Pods-HackMobile-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
+				"${PODS_ROOT}/PayCardsRecognizer/Source/PayCardsRecognizer.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -260,6 +264,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PayCardsRecognizer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -313,6 +318,7 @@
 				AAB6D6A3224FD7FA00D91891 /* CardsTableViewController.swift in Sources */,
 				AAB6D69F224FD1DD00D91891 /* UIColorExtension.swift in Sources */,
 				AAB6D6A1224FD64E00D91891 /* UIAlertController.swift in Sources */,
+				AADECE3B2250122500DCAA52 /* Anchor.swift in Sources */,
 				49A16194B9F4940295DB7717 /* CardTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

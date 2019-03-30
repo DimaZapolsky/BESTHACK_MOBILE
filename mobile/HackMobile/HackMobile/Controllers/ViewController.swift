@@ -11,6 +11,15 @@ import Vision
 import AVFoundation
 import Alamofire
 
+extension UIImage {
+    func cropped(boundingBox: CGRect) -> UIImage? {
+        guard let cgImage = self.cgImage?.cropping(to: boundingBox) else {
+            return nil
+        }
+        
+        return UIImage(cgImage: cgImage)
+    }
+}
 
 class ViewController: UIViewController {
     
@@ -72,6 +81,7 @@ class ViewController: UIViewController {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
+        
         return imagePicker
     }
     
@@ -121,11 +131,13 @@ class ViewController: UIViewController {
     
     @objc func takePhoto(_ sender: UIButton) {
         sender.blink()
+        //UNCOMMENT
         let picker = self.getDefaultImagePicker()
         picker.sourceType = UIImagePickerController.SourceType.camera
         
-        self.present(picker, animated: true, completion: nil)
-        
+        self.present(picker, animated: true, completion: nil)/*
+        let cv = CameraController()
+        self.present(cv, animated: true)*/
     }
     
     @objc func recognize(_ sender: UIButton?) {
@@ -133,7 +145,7 @@ class ViewController: UIViewController {
         let data = self.imageView.image!.pngData()!
         Alamofire.upload(multipartFormData: { (MultipartFormData) in
             MultipartFormData.append(data, withName: "file", fileName: "file.png", mimeType: "image/png")
-        }, to: URL(string: "http://192.168.43.133:8080/")!) { (res) in
+        }, to: URL(string: "http://10.128.31.238:3333/")!) { (res) in
             print()
             print()
             print(res)
@@ -195,11 +207,12 @@ class ViewController: UIViewController {
     }
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         // Do any additional setup after loading the view, typically from a nib.
-        
+        self.navigationItem.title = "Add Card"
         self.view.addSubview(imageView)
         self.view.addSubview(buttonsStack)
         NSLayoutConstraint.activate([
@@ -207,7 +220,7 @@ class ViewController: UIViewController {
             imageView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20),
             imageView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -20),
             //imageView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
-            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 1.0, constant: 0),
+            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 1.0 / 1.0, constant: 0),
             buttonsStack.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: 20),
             buttonsStack.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0),
             buttonsStack.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.4, constant: -10),
@@ -264,7 +277,25 @@ extension ViewController: UIImagePickerControllerDelegate {
             didSelect = true
         }
         self.recognize(nil)
+        /*let orientation = CGImagePropertyOrientation(rawValue: UInt32(chosenImage.imageOrientation.rawValue))!
         
+        let request = [self.rectangleDetectionRequest]
+        
+        let imageRequestHandler = VNImageRequestHandler(cgImage: chosenImage.cgImage!,
+                                                        orientation: orientation,
+                                                        options: [:])
+        
+        // Send the requests to the request handler.
+        DispatchQueue.global(qos: .userInitiated).async {
+            do {
+                try imageRequestHandler.perform(request)
+            } catch let error as NSError {
+                print("Failed to perform image request: \(error)")
+                //self.presentAlert("Image Request Failed", error: error)
+                return
+            }
+        }
+        */
         
         //recognizeButton.isEnabled = true
         //recognizeButton.backgroundColor = UIColor.tealBlue

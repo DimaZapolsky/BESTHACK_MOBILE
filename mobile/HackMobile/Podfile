@@ -10,4 +10,5 @@ target 'HackMobile' do
 	pod 'RxSwift', '~> 4.4'
 	pod 'Eureka', '~> 4.3'
 	pod 'RxCocoa', '~> 4.4'	
+	pod 'PayCardsRecognizer'		
 end

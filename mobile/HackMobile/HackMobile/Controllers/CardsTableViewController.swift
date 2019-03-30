@@ -12,21 +12,32 @@ import CoreData
 
 class CardsTableViewController: UITableViewController {
     
-    private var fetchedResultController: NSFetchedResultsController<CardEntity> {
+    private var fetchedResultController: NSFetchedResultsController<CardEntity>! {
         didSet {
             fetchedResultController.delegate = self
+            do {
+                try fetchedResultController.performFetch()
+                self.tableView.reloadData()
+            } catch let err {
+                print(err)
+            }
         }
     }
     
     init() {
-        self.fetchedResultController = StorageManager.shared.generateFRC()
         super.init(nibName: nil, bundle: nil)
 
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.separatorStyle = .none
+        self.navigationItem.title = "Your Cards"
+        self.tableView.register(CardTableViewCell.self, forCellReuseIdentifier: CardTableViewCell.cellId)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Card", style: .plain, target: self, action: #selector(handleAddButtonTap(_:)))
+        self.fetchedResultController = StorageManager.shared.generateFRC()
+        self.tableView.rowHeight = 120
+
 
     }
 
@@ -74,5 +85,31 @@ extension CardsTableViewController: NSFetchedResultsControllerDelegate {
         case .update:
             self.tableView.reloadRows(at: [indexPath!], with: .automatic)
         }
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return self.fetchedResultController.sections?.count ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.fetchedResultController.sections![section].numberOfObjects
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: CardTableViewCell.cellId, for: indexPath) as! CardTableViewCell
+        cell.configure(card: fetchedResultController.object(at: indexPath))
+        
+        return cell
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = ValidationFormController(card: self.fetchedResultController.object(at: indexPath))
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let action = UITableViewRowAction(style: .destructive, title: "Delete") { (_, indexPath) in
+            StorageManager.shared.eraseCard(card: self.fetchedResultController.object(at: indexPath))
+        }
+        return [action]
     }
 }
