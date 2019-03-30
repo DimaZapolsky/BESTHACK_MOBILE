@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		62CF4DEF67BEA543B55E458D /* Pods_HackMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 977550320E43E9B19A26803D /* Pods_HackMobile.framework */; };
+		12021DF92197C41E5791E080 /* Pods_HackMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81CDF05EBE17284F7F41E62 /* Pods_HackMobile.framework */; };
 		AA1947BF224F6262003A6774 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1947BE224F6262003A6774 /* AppDelegate.swift */; };
 		AA1947C1224F6262003A6774 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1947C0224F6262003A6774 /* ViewController.swift */; };
 		AA1947C4224F6262003A6774 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1947C2224F6262003A6774 /* Main.storyboard */; };
@@ -15,12 +15,15 @@
 		AA1947C9224F6264003A6774 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1947C7224F6264003A6774 /* LaunchScreen.storyboard */; };
 		AA1947D2224F62F0003A6774 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = AA1947D1224F62F0003A6774 /* tessdata */; };
 		AA1947D4224F644F003A6774 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1947D3224F644F003A6774 /* CoreImage.framework */; };
-		AA1947D6224F6458003A6774 /* TesseractOCR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1947D5224F6458003A6774 /* TesseractOCR.framework */; };
 		AA1947D8224F6506003A6774 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1947D7224F6506003A6774 /* libc++.tbd */; };
+		AAB6D688224FA27600D91891 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D687224FA27600D91891 /* ConfirmationViewController.swift */; };
+		AAB6D68A224FA2D100D91891 /* ConfirmationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D689224FA2D100D91891 /* ConfirmationCell.swift */; };
+		AAB6D68C224FAEC700D91891 /* ConfirmationFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D68B224FAEC700D91891 /* ConfirmationFooter.swift */; };
+		AAB6D68E224FB3A700D91891 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D68D224FB3A700D91891 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		977550320E43E9B19A26803D /* Pods_HackMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HackMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A81CDF05EBE17284F7F41E62 /* Pods_HackMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HackMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA1947BB224F6262003A6774 /* HackMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA1947BE224F6262003A6774 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA1947C0224F6262003A6774 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -30,8 +33,11 @@
 		AA1947CA224F6264003A6774 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA1947D1224F62F0003A6774 /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
 		AA1947D3224F644F003A6774 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
-		AA1947D5224F6458003A6774 /* TesseractOCR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TesseractOCR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA1947D7224F6506003A6774 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		AAB6D687224FA27600D91891 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
+		AAB6D689224FA2D100D91891 /* ConfirmationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationCell.swift; sourceTree = "<group>"; };
+		AAB6D68B224FAEC700D91891 /* ConfirmationFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationFooter.swift; sourceTree = "<group>"; };
+		AAB6D68D224FB3A700D91891 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		B600AFCCCB5EB8ADC4192479 /* Pods-HackMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackMobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HackMobile/Pods-HackMobile.debug.xcconfig"; sourceTree = "<group>"; };
 		C232EE83EFE4576A65418EBB /* Pods-HackMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackMobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-HackMobile/Pods-HackMobile.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -42,9 +48,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA1947D8224F6506003A6774 /* libc++.tbd in Frameworks */,
-				AA1947D6224F6458003A6774 /* TesseractOCR.framework in Frameworks */,
 				AA1947D4224F644F003A6774 /* CoreImage.framework in Frameworks */,
-				62CF4DEF67BEA543B55E458D /* Pods_HackMobile.framework in Frameworks */,
+				12021DF92197C41E5791E080 /* Pods_HackMobile.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,9 +69,8 @@
 			isa = PBXGroup;
 			children = (
 				AA1947D7224F6506003A6774 /* libc++.tbd */,
-				AA1947D5224F6458003A6774 /* TesseractOCR.framework */,
 				AA1947D3224F644F003A6774 /* CoreImage.framework */,
-				977550320E43E9B19A26803D /* Pods_HackMobile.framework */,
+				A81CDF05EBE17284F7F41E62 /* Pods_HackMobile.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -99,6 +103,10 @@
 				AA1947C5224F6264003A6774 /* Assets.xcassets */,
 				AA1947C7224F6264003A6774 /* LaunchScreen.storyboard */,
 				AA1947CA224F6264003A6774 /* Info.plist */,
+				AAB6D687224FA27600D91891 /* ConfirmationViewController.swift */,
+				AAB6D689224FA2D100D91891 /* ConfirmationCell.swift */,
+				AAB6D68B224FAEC700D91891 /* ConfirmationFooter.swift */,
+				AAB6D68D224FB3A700D91891 /* Colors.swift */,
 			);
 			path = HackMobile;
 			sourceTree = "<group>";
@@ -122,7 +130,7 @@
 				AA1947B7224F6262003A6774 /* Sources */,
 				AA1947B8224F6262003A6774 /* Frameworks */,
 				AA1947B9224F6262003A6774 /* Resources */,
-				3C43EEDA020BF76836A4F659 /* [CP] Embed Pods Frameworks */,
+				18049FF1F0EB603F21EBBAD9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -181,7 +189,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3C43EEDA020BF76836A4F659 /* [CP] Embed Pods Frameworks */ = {
+		18049FF1F0EB603F21EBBAD9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -190,13 +198,19 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HackMobile/Pods-HackMobile-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/TesseractOCRiOS/TesseractOCR.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TesseractOCR.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -232,7 +246,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAB6D68C224FAEC700D91891 /* ConfirmationFooter.swift in Sources */,
+				AAB6D68E224FB3A700D91891 /* Colors.swift in Sources */,
+				AAB6D688224FA27600D91891 /* ConfirmationViewController.swift in Sources */,
 				AA1947C1224F6262003A6774 /* ViewController.swift in Sources */,
+				AAB6D68A224FA2D100D91891 /* ConfirmationCell.swift in Sources */,
 				AA1947BF224F6262003A6774 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

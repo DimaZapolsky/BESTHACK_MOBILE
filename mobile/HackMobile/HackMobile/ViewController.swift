@@ -7,7 +7,10 @@
 //
 
 import UIKit
-import TesseractOCR
+import Vision
+import AVFoundation
+import Alamofire
+
 
 class ViewController: UIViewController {
 
@@ -54,21 +57,143 @@ class ViewController: UIViewController {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
         iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.clipsToBounds = true
+        iv.layer.cornerRadius = 20
+        iv.layer.borderWidth = 0.5
+        iv.layer.borderColor = UIColor.lightGray.cgColor
         return iv
     }()
+    
+    
+    fileprivate func getDefaultImagePicker() -> UIImagePickerController {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        return imagePicker
+    }
+    
+    
+    lazy var button: UIButton = {
+        let b = UIButton()
+        b.backgroundColor = .tealBlue
+
+        b.clipsToBounds = true
+        b.layer.cornerRadius = 10
+        b.layer.borderColor = UIColor.gray.cgColor
+        b.layer.borderWidth = 0.5
+        b.addTarget(self, action: #selector(takePhoto), for: .touchUpInside)
+        b.setTitle("Take Photo", for: .normal)
+        b.setTitleColor(.black, for: .normal)
+        b.translatesAutoresizingMaskIntoConstraints = false
+        return b
+    }()
+    
+    lazy var recognizeButton: UIButton = {
+        let b = UIButton()
+        b.backgroundColor = .lightTealBlue
+        b.clipsToBounds = true
+        b.layer.cornerRadius = 10
+        b.layer.borderColor = UIColor.gray.cgColor
+        b.layer.borderWidth = 0.5
+        b.addTarget(self, action: #selector(recognize), for: .touchUpInside)
+        b.setTitle("Recognize", for: .normal)
+        b.setTitleColor(.black, for: .normal)
+        b.setTitleColor(.gray, for: .disabled)
+        b.translatesAutoresizingMaskIntoConstraints = false
+        b.isEnabled = false
+        return b
+    }()
+    
+    lazy var buttonsStack: UIStackView = {
+        let view = UIView()
+        let sv = UIStackView(arrangedSubviews: [button, view, recognizeButton])
+        sv.axis = .horizontal
+        sv.spacing = 20
+        
+        sv.distribution = .fill
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        
+        return sv
+    }()
+    
+    @objc func takePhoto(_ sender: UIButton) {
+        sender.blink()
+        let picker = self.getDefaultImagePicker()
+        picker.sourceType = UIImagePickerController.SourceType.camera
+        
+        self.present(picker, animated: true, completion: nil)
+        
+    }
+    
+    @objc func recognize(_ sender: UIButton) {
+        sender.blink()
+        let data = self.imageView.image!.pngData()!
+        Alamofire.upload(multipartFormData: { (MultipartFormData) in
+            MultipartFormData.append(data, withName: "file", fileName: "file.png", mimeType: "image/png")
+        }, to: URL(string: "http://10.128.31.3:3333/")!) { (res) in
+            print()
+            print()
+            print(res)
+            switch res {
+            case .success(let upload, _, _):
+                
+                upload.uploadProgress(closure: { (Progress) in
+                    print("Upload Progress: \(Progress.fractionCompleted)")
+                })
+                upload.responseJSON(completionHandler: { (resp) in
+                    DispatchQueue.main.async {
+                        let vc = ConfirmationTableViewController(credential: ["Name":"Obama", "expires":"02/20", "bank":"Alpha bank"])
+                        self.navigationController?.pushViewController(vc, animated: true)
+                        //self.present(vc, animated: true, completion: nil)
+                    }
+                })
+                /*upload.responseJSON { response in
+                    //response.data
+                    print(response.result.value)
+                    var mydict = response.result.value as! [String : Any]
+                    print(response.result.value as! [String : Any])
+                    var arr = [[String : String]]()
+                    arr = mydict["results"] as! [[String : String]]
+                    mydict["results"] = arr
+                    print(mydict)
+                    if let JSON = response.data {
+                        print("Response : ",JSON)
+                        do {
+                            
+                        } catch {
+                            print("ERROR WHILE DECODING")
+                        }
+                    }
+                }*/
+            default:
+                print("ERROR!!!")
+            }
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         self.view.addSubview(imageView)
+        self.view.addSubview(buttonsStack)
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            imageView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            imageView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            imageView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+            imageView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20),
+            imageView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -20),
+            //imageView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 1.0, constant: 0),
+            buttonsStack.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: 20),
+            buttonsStack.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0),
+            buttonsStack.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1, constant: -40),
+            buttonsStack.heightAnchor.constraint(equalToConstant: 50),
+            button.widthAnchor.constraint(equalTo: buttonsStack.widthAnchor, multiplier: 0.37, constant: 0),
+            recognizeButton.widthAnchor.constraint(equalTo: buttonsStack.widthAnchor, multiplier: 0.37, constant: 0)
             ])
         
-        if let tesseract = G8Tesseract(language: "ocr+mcr") {
+        
+        /*if let tesseract = G8Tesseract(language: "digits") {
             //
             tesseract.engineMode = .cubeOnly
             
@@ -94,9 +219,28 @@ class ViewController: UIViewController {
             imageView.image = newImage
             // 6
             print(tesseract.recognizedText)
-        }
+        }*/
     }
 
 
+}
+
+extension ViewController: UINavigationControllerDelegate {
+    
+}
+
+extension ViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let chosenImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else { return }
+        
+        self.imageView.image = chosenImage
+        recognizeButton.isEnabled = true
+        recognizeButton.backgroundColor = UIColor.tealBlue
+        //self.toggleEditingButtons(true)
+        //to be sure that ImagePickerController will be dismissed
+        defer {
+            dismiss(animated: true, completion: nil)
+        }
+    }
 }
 

@@ -1,0 +1,5 @@
+LeadPunc="({[`'
+TrailPunc=}:;-]!?`,.)"'
+NumLeadPunc=#({[@$
+NumTrailPunc=}):;].,%
+Digits=0123456789

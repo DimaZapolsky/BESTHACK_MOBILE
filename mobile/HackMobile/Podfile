@@ -6,5 +6,7 @@ target 'HackMobile' do
   use_frameworks!
 
   # Pods for HackMobile
-	pod 'TesseractOCRiOS'
+ pod 'Alamofire', '4.4'	
+	pod 'RxSwift', '~> 4.4'
+	pod 'RxCocoa', '~> 4.4'	
 end
