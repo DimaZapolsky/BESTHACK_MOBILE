@@ -179,8 +179,8 @@ Card::Card(json boxesJSON) {
         }
     }
     bank = new BankInfo(cardNumber);
-    cerr << boxes << endl << endl << endl;
-    cout << "_________________________________" << endl;
+    //cerr << boxes << endl << endl << endl;
+    //cout << "_________________________________" << endl;
 }
 
 string Card::getBankName() {
