@@ -1,16 +1,33 @@
 PODS:
-  - TesseractOCRiOS (5.0.1)
+  - Alamofire (4.4.0)
+  - Eureka (4.3.1)
+  - RxAtomic (4.4.2)
+  - RxCocoa (4.4.2):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxSwift (4.4.2):
+    - RxAtomic (>= 4.4.2, ~> 4.4)
 
 DEPENDENCIES:
-  - TesseractOCRiOS
+  - Alamofire (= 4.4)
+  - Eureka (~> 4.3)
+  - RxCocoa (~> 4.4)
+  - RxSwift (~> 4.4)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - TesseractOCRiOS
+    - Alamofire
+    - Eureka
+    - RxAtomic
+    - RxCocoa
+    - RxSwift
 
 SPEC CHECKSUMS:
-  TesseractOCRiOS: 2c189465f86abb030d0c5141c90da9705b647854
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Eureka: 28ea296f06710f6745266b71f17862048941a32d
+  RxAtomic: d00e97c10db88c6f08540e0bf2752fc5a2404167
+  RxCocoa: 477990dc3b4c3ff55fb0ac77e1cc06244e0aaec8
+  RxSwift: 74c29b693c8e42b0f64400e8b06564575742d649
 
-PODFILE CHECKSUM: 4c67c993cfb1020838f7f438d1cc10edb2720783
+PODFILE CHECKSUM: 5f92ea36c4783d80b931c195d890aa144031ecaf
 
 COCOAPODS: 1.5.3

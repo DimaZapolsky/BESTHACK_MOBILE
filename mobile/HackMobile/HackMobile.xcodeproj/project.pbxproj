@@ -7,20 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		62CF4DEF67BEA543B55E458D /* Pods_HackMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 977550320E43E9B19A26803D /* Pods_HackMobile.framework */; };
+		12021DF92197C41E5791E080 /* Pods_HackMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81CDF05EBE17284F7F41E62 /* Pods_HackMobile.framework */; };
+		49A16194B9F4940295DB7717 /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A163CFEEFEC1D6018C90CF /* CardTableViewCell.swift */; };
 		AA1947BF224F6262003A6774 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1947BE224F6262003A6774 /* AppDelegate.swift */; };
 		AA1947C1224F6262003A6774 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1947C0224F6262003A6774 /* ViewController.swift */; };
 		AA1947C4224F6262003A6774 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1947C2224F6262003A6774 /* Main.storyboard */; };
 		AA1947C6224F6264003A6774 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA1947C5224F6264003A6774 /* Assets.xcassets */; };
 		AA1947C9224F6264003A6774 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1947C7224F6264003A6774 /* LaunchScreen.storyboard */; };
-		AA1947D2224F62F0003A6774 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = AA1947D1224F62F0003A6774 /* tessdata */; };
 		AA1947D4224F644F003A6774 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1947D3224F644F003A6774 /* CoreImage.framework */; };
-		AA1947D6224F6458003A6774 /* TesseractOCR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1947D5224F6458003A6774 /* TesseractOCR.framework */; };
 		AA1947D8224F6506003A6774 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1947D7224F6506003A6774 /* libc++.tbd */; };
+		AAB6D688224FA27600D91891 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D687224FA27600D91891 /* ConfirmationViewController.swift */; };
+		AAB6D68A224FA2D100D91891 /* ConfirmationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D689224FA2D100D91891 /* ConfirmationCell.swift */; };
+		AAB6D68C224FAEC700D91891 /* ConfirmationFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D68B224FAEC700D91891 /* ConfirmationFooter.swift */; };
+		AAB6D68E224FB3A700D91891 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D68D224FB3A700D91891 /* Colors.swift */; };
+		AAB6D694224FCC2500D91891 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D692224FCC2500D91891 /* Model.xcdatamodeld */; };
+		AAB6D696224FCCFF00D91891 /* CardEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D695224FCCFF00D91891 /* CardEntity.swift */; };
+		AAB6D698224FCD5500D91891 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D697224FCD5500D91891 /* CoreDataStack.swift */; };
+		AAB6D69A224FCDA100D91891 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D699224FCDA100D91891 /* StorageManager.swift */; };
+		AAB6D69C224FD07800D91891 /* CodableCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D69B224FD07800D91891 /* CodableCard.swift */; };
+		AAB6D69F224FD1DD00D91891 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D69E224FD1DD00D91891 /* UIColorExtension.swift */; };
+		AAB6D6A1224FD64E00D91891 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D6A0224FD64E00D91891 /* UIAlertController.swift */; };
+		AAB6D6A3224FD7FA00D91891 /* CardsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D6A2224FD7FA00D91891 /* CardsTableViewController.swift */; };
+		AAB6D6A5224FE3B200D91891 /* FormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D6A4224FE3B200D91891 /* FormController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		977550320E43E9B19A26803D /* Pods_HackMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HackMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		49A163CFEEFEC1D6018C90CF /* CardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
+		A81CDF05EBE17284F7F41E62 /* Pods_HackMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HackMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA1947BB224F6262003A6774 /* HackMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA1947BE224F6262003A6774 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA1947C0224F6262003A6774 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -28,10 +41,21 @@
 		AA1947C5224F6264003A6774 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA1947C8224F6264003A6774 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA1947CA224F6264003A6774 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AA1947D1224F62F0003A6774 /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
 		AA1947D3224F644F003A6774 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
-		AA1947D5224F6458003A6774 /* TesseractOCR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TesseractOCR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA1947D7224F6506003A6774 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		AAB6D687224FA27600D91891 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
+		AAB6D689224FA2D100D91891 /* ConfirmationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationCell.swift; sourceTree = "<group>"; };
+		AAB6D68B224FAEC700D91891 /* ConfirmationFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationFooter.swift; sourceTree = "<group>"; };
+		AAB6D68D224FB3A700D91891 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		AAB6D693224FCC2500D91891 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		AAB6D695224FCCFF00D91891 /* CardEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEntity.swift; sourceTree = "<group>"; };
+		AAB6D697224FCD5500D91891 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		AAB6D699224FCDA100D91891 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		AAB6D69B224FD07800D91891 /* CodableCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableCard.swift; sourceTree = "<group>"; };
+		AAB6D69E224FD1DD00D91891 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		AAB6D6A0224FD64E00D91891 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
+		AAB6D6A2224FD7FA00D91891 /* CardsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsTableViewController.swift; sourceTree = "<group>"; };
+		AAB6D6A4224FE3B200D91891 /* FormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormController.swift; sourceTree = "<group>"; };
 		B600AFCCCB5EB8ADC4192479 /* Pods-HackMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackMobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HackMobile/Pods-HackMobile.debug.xcconfig"; sourceTree = "<group>"; };
 		C232EE83EFE4576A65418EBB /* Pods-HackMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackMobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-HackMobile/Pods-HackMobile.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -42,9 +66,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA1947D8224F6506003A6774 /* libc++.tbd in Frameworks */,
-				AA1947D6224F6458003A6774 /* TesseractOCR.framework in Frameworks */,
 				AA1947D4224F644F003A6774 /* CoreImage.framework in Frameworks */,
-				62CF4DEF67BEA543B55E458D /* Pods_HackMobile.framework in Frameworks */,
+				12021DF92197C41E5791E080 /* Pods_HackMobile.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,9 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				AA1947D7224F6506003A6774 /* libc++.tbd */,
-				AA1947D5224F6458003A6774 /* TesseractOCR.framework */,
 				AA1947D3224F644F003A6774 /* CoreImage.framework */,
-				977550320E43E9B19A26803D /* Pods_HackMobile.framework */,
+				A81CDF05EBE17284F7F41E62 /* Pods_HackMobile.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -92,23 +114,60 @@
 		AA1947BD224F6262003A6774 /* HackMobile */ = {
 			isa = PBXGroup;
 			children = (
-				AA1947D0224F62C3003A6774 /* Supporting Files */,
+				AAB6D69D224FD1CC00D91891 /* Helper */,
+				AAB6D691224FCB8200D91891 /* CoreData */,
+				AAB6D690224FC0BD00D91891 /* Views */,
+				AAB6D68F224FC09C00D91891 /* Controllers */,
 				AA1947BE224F6262003A6774 /* AppDelegate.swift */,
-				AA1947C0224F6262003A6774 /* ViewController.swift */,
 				AA1947C2224F6262003A6774 /* Main.storyboard */,
 				AA1947C5224F6264003A6774 /* Assets.xcassets */,
 				AA1947C7224F6264003A6774 /* LaunchScreen.storyboard */,
 				AA1947CA224F6264003A6774 /* Info.plist */,
+				AAB6D68D224FB3A700D91891 /* Colors.swift */,
 			);
 			path = HackMobile;
 			sourceTree = "<group>";
 		};
-		AA1947D0224F62C3003A6774 /* Supporting Files */ = {
+		AAB6D68F224FC09C00D91891 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				AA1947D1224F62F0003A6774 /* tessdata */,
+				AA1947C0224F6262003A6774 /* ViewController.swift */,
+				AAB6D687224FA27600D91891 /* ConfirmationViewController.swift */,
+				AAB6D6A2224FD7FA00D91891 /* CardsTableViewController.swift */,
+				AAB6D6A4224FE3B200D91891 /* FormController.swift */,
 			);
-			path = "Supporting Files";
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AAB6D690224FC0BD00D91891 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AAB6D68B224FAEC700D91891 /* ConfirmationFooter.swift */,
+				AAB6D689224FA2D100D91891 /* ConfirmationCell.swift */,
+				49A163CFEEFEC1D6018C90CF /* CardTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AAB6D691224FCB8200D91891 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				AAB6D692224FCC2500D91891 /* Model.xcdatamodeld */,
+				AAB6D695224FCCFF00D91891 /* CardEntity.swift */,
+				AAB6D697224FCD5500D91891 /* CoreDataStack.swift */,
+				AAB6D699224FCDA100D91891 /* StorageManager.swift */,
+				AAB6D69B224FD07800D91891 /* CodableCard.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		AAB6D69D224FD1CC00D91891 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				AAB6D69E224FD1DD00D91891 /* UIColorExtension.swift */,
+				AAB6D6A0224FD64E00D91891 /* UIAlertController.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,7 +181,7 @@
 				AA1947B7224F6262003A6774 /* Sources */,
 				AA1947B8224F6262003A6774 /* Frameworks */,
 				AA1947B9224F6262003A6774 /* Resources */,
-				3C43EEDA020BF76836A4F659 /* [CP] Embed Pods Frameworks */,
+				18049FF1F0EB603F21EBBAD9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -172,7 +231,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA1947C9224F6264003A6774 /* LaunchScreen.storyboard in Resources */,
-				AA1947D2224F62F0003A6774 /* tessdata in Resources */,
 				AA1947C6224F6264003A6774 /* Assets.xcassets in Resources */,
 				AA1947C4224F6262003A6774 /* Main.storyboard in Resources */,
 			);
@@ -181,7 +239,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3C43EEDA020BF76836A4F659 /* [CP] Embed Pods Frameworks */ = {
+		18049FF1F0EB603F21EBBAD9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -190,13 +248,21 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HackMobile/Pods-HackMobile-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/TesseractOCRiOS/TesseractOCR.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TesseractOCR.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -232,8 +298,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAB6D68C224FAEC700D91891 /* ConfirmationFooter.swift in Sources */,
+				AAB6D68E224FB3A700D91891 /* Colors.swift in Sources */,
+				AAB6D69C224FD07800D91891 /* CodableCard.swift in Sources */,
+				AAB6D696224FCCFF00D91891 /* CardEntity.swift in Sources */,
+				AAB6D698224FCD5500D91891 /* CoreDataStack.swift in Sources */,
+				AAB6D688224FA27600D91891 /* ConfirmationViewController.swift in Sources */,
+				AAB6D694224FCC2500D91891 /* Model.xcdatamodeld in Sources */,
+				AAB6D6A5224FE3B200D91891 /* FormController.swift in Sources */,
 				AA1947C1224F6262003A6774 /* ViewController.swift in Sources */,
+				AAB6D69A224FCDA100D91891 /* StorageManager.swift in Sources */,
+				AAB6D68A224FA2D100D91891 /* ConfirmationCell.swift in Sources */,
 				AA1947BF224F6262003A6774 /* AppDelegate.swift in Sources */,
+				AAB6D6A3224FD7FA00D91891 /* CardsTableViewController.swift in Sources */,
+				AAB6D69F224FD1DD00D91891 /* UIColorExtension.swift in Sources */,
+				AAB6D6A1224FD64E00D91891 /* UIAlertController.swift in Sources */,
+				49A16194B9F4940295DB7717 /* CardTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +519,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AAB6D692224FCC2500D91891 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AAB6D693224FCC2500D91891 /* Model.xcdatamodel */,
+			);
+			currentVersion = AAB6D693224FCC2500D91891 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = AA1947B3224F6262003A6774 /* Project object */;
 }
