@@ -13,7 +13,6 @@
 		AA1947C4224F6262003A6774 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1947C2224F6262003A6774 /* Main.storyboard */; };
 		AA1947C6224F6264003A6774 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA1947C5224F6264003A6774 /* Assets.xcassets */; };
 		AA1947C9224F6264003A6774 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1947C7224F6264003A6774 /* LaunchScreen.storyboard */; };
-		AA1947D2224F62F0003A6774 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = AA1947D1224F62F0003A6774 /* tessdata */; };
 		AA1947D4224F644F003A6774 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1947D3224F644F003A6774 /* CoreImage.framework */; };
 		AA1947D8224F6506003A6774 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1947D7224F6506003A6774 /* libc++.tbd */; };
 		AAB6D688224FA27600D91891 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D687224FA27600D91891 /* ConfirmationViewController.swift */; };
@@ -31,7 +30,6 @@
 		AA1947C5224F6264003A6774 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA1947C8224F6264003A6774 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA1947CA224F6264003A6774 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AA1947D1224F62F0003A6774 /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
 		AA1947D3224F644F003A6774 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		AA1947D7224F6506003A6774 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		AAB6D687224FA27600D91891 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 		AA1947BD224F6262003A6774 /* HackMobile */ = {
 			isa = PBXGroup;
 			children = (
-				AA1947D0224F62C3003A6774 /* Supporting Files */,
 				AA1947BE224F6262003A6774 /* AppDelegate.swift */,
 				AA1947C0224F6262003A6774 /* ViewController.swift */,
 				AA1947C2224F6262003A6774 /* Main.storyboard */,
@@ -109,14 +106,6 @@
 				AAB6D68D224FB3A700D91891 /* Colors.swift */,
 			);
 			path = HackMobile;
-			sourceTree = "<group>";
-		};
-		AA1947D0224F62C3003A6774 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				AA1947D1224F62F0003A6774 /* tessdata */,
-			);
-			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,7 +169,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA1947C9224F6264003A6774 /* LaunchScreen.storyboard in Resources */,
-				AA1947D2224F62F0003A6774 /* tessdata in Resources */,
 				AA1947C6224F6264003A6774 /* Assets.xcassets in Resources */,
 				AA1947C4224F6262003A6774 /* Main.storyboard in Resources */,
 			);
