@@ -1,0 +1,6 @@
+framework module Pods_HackMobile {
+  umbrella header "Pods-HackMobile-umbrella.h"
+
+  export *
+  module * { export * }
+}
