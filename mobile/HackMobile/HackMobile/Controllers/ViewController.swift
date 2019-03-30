@@ -13,7 +13,10 @@ import Alamofire
 
 
 class ViewController: UIViewController {
-
+    
+    private var didCancel: Bool = false
+    private var didSelect: Bool = false
+    
     func DrawOnImage(startingImage: UIImage, box: CGRect) -> UIImage {
         
         // Create a context of the starting image size and set it as the current one
@@ -88,7 +91,7 @@ class ViewController: UIViewController {
         return b
     }()
     
-    lazy var recognizeButton: UIButton = {
+    /*lazy var recognizeButton: UIButton = {
         let b = UIButton()
         b.backgroundColor = .lightTealBlue
         b.clipsToBounds = true
@@ -102,11 +105,11 @@ class ViewController: UIViewController {
         b.translatesAutoresizingMaskIntoConstraints = false
         b.isEnabled = false
         return b
-    }()
+    }()*/
     
     lazy var buttonsStack: UIStackView = {
         let view = UIView()
-        let sv = UIStackView(arrangedSubviews: [button, view, recognizeButton])
+        let sv = UIStackView(arrangedSubviews: [button])
         sv.axis = .horizontal
         sv.spacing = 20
         
@@ -125,12 +128,12 @@ class ViewController: UIViewController {
         
     }
     
-    @objc func recognize(_ sender: UIButton) {
-        sender.blink()
+    @objc func recognize(_ sender: UIButton?) {
+        sender?.blink()
         let data = self.imageView.image!.pngData()!
         Alamofire.upload(multipartFormData: { (MultipartFormData) in
             MultipartFormData.append(data, withName: "file", fileName: "file.png", mimeType: "image/png")
-        }, to: URL(string: "http://10.128.31.3:3333/")!) { (res) in
+        }, to: URL(string: "http://192.168.43.133:8080/")!) { (res) in
             print()
             print()
             print(res)
@@ -141,11 +144,31 @@ class ViewController: UIViewController {
                     print("Upload Progress: \(Progress.fractionCompleted)")
                 })
                 upload.responseJSON(completionHandler: { (resp) in
-                    DispatchQueue.main.async {
-                        let vc = ConfirmationTableViewController(credential: ["Name":"Obama", "expires":"02/20", "bank":"Alpha bank"])
-                        self.navigationController?.pushViewController(vc, animated: true)
-                        //self.present(vc, animated: true, completion: nil)
+                        //if (!self.didReselectPhoto) {
+                        //Timer.scheduledTimer(withTimeInterval: 8, repeats: false, block: { (_) in
+                    
+                    if (!self.didCancel) {
+                        print("Kek")
+                        do {
+                            /*if let data = resp.data {
+                                let vc = ValidationFormController(card: try JSONDecoder().decode(CodableCard, from: data))
+                            }*/
+                            let vc = ValidationFormController(card: CodableCard(holderName: "Obama", bankName: "BABang", expDate: Date(), cardNumber: "1234 5678 9012", color: nil))
+                            self.navigationController?.pushViewController(vc, animated: true)
+
+                        } catch let err {
+                            print(err)
+                            fatalError()
+                        }
+                        //let vc = ConfirmationTableViewController(credential: ["Name":"Obama", "expires":"02/20", "bank":"Alpha bank"])
+
+                    } else {
+                        print("Cancel")
                     }
+                    self.didSelect = false
+                    self.didCancel = false
+                        //})
+                    
                 })
                 /*upload.responseJSON { response in
                     //response.data
@@ -174,22 +197,23 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
         // Do any additional setup after loading the view, typically from a nib.
         
         self.view.addSubview(imageView)
         self.view.addSubview(buttonsStack)
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            imageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
             imageView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20),
             imageView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -20),
             //imageView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
             imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 1.0, constant: 0),
             buttonsStack.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: 20),
             buttonsStack.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0),
-            buttonsStack.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1, constant: -40),
+            buttonsStack.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.4, constant: -10),
             buttonsStack.heightAnchor.constraint(equalToConstant: 50),
-            button.widthAnchor.constraint(equalTo: buttonsStack.widthAnchor, multiplier: 0.37, constant: 0),
-            recognizeButton.widthAnchor.constraint(equalTo: buttonsStack.widthAnchor, multiplier: 0.37, constant: 0)
+            //button.widthAnchor.constraint(equalTo: buttonsStack.widthAnchor, multiplier: 0.43, constant: 0),
+            //recognizeButton.widthAnchor.constraint(equalTo: buttonsStack.widthAnchor, multiplier: 0.43, constant: 0)
             ])
         
         
@@ -234,8 +258,16 @@ extension ViewController: UIImagePickerControllerDelegate {
         guard let chosenImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else { return }
         
         self.imageView.image = chosenImage
-        recognizeButton.isEnabled = true
-        recognizeButton.backgroundColor = UIColor.tealBlue
+        if didSelect {
+            didCancel = true
+        } else {
+            didSelect = true
+        }
+        self.recognize(nil)
+        
+        
+        //recognizeButton.isEnabled = true
+        //recognizeButton.backgroundColor = UIColor.tealBlue
         //self.toggleEditingButtons(true)
         //to be sure that ImagePickerController will be dismissed
         defer {

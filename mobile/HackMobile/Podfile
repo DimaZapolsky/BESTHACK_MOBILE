@@ -8,5 +8,6 @@ target 'HackMobile' do
   # Pods for HackMobile
  pod 'Alamofire', '4.4'	
 	pod 'RxSwift', '~> 4.4'
+	pod 'Eureka', '~> 4.3'
 	pod 'RxCocoa', '~> 4.4'	
 end

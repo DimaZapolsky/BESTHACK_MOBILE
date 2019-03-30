@@ -17,9 +17,12 @@ class ConfirmationTableViewController: UITableViewController {
     private var credentials: [String: String] = [:]
     
     private var credentialsArray: [(String, String)] = []
+
+    private var disposeBag = DisposeBag()
     
     init(credential: [String: String]) {
         self.credentials = credential
+
         self.credentialsArray = credential.sorted(by: { (lhs, rhs) -> Bool in
             lhs.key < rhs.key
         }).map({ (key, val) -> (String, String) in
@@ -45,7 +48,7 @@ class ConfirmationTableViewController: UITableViewController {
         } else {
             sender.title = "Edit"
         }
-        
+        //sender.blink()
     }
     
     override func viewDidLoad() {
@@ -75,6 +78,23 @@ class ConfirmationTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view = ConfirmationFooterView()
+        view.confirmationButtonTap.subscribe(onNext: { (_) in
+            do {
+
+                //StorageManager.shared.createCard(decodedCard: codableCard)
+                
+                DispatchQueue.main.async {
+                    self.present(UIAlertController.genAlertController(title: "Success", message: "Successfully created new card", okActionCompletion: { (_) in
+                        self.navigationController?.popViewController(animated: true)
+                    }), animated: true, completion: nil)
+                    //self.navigationController?.popViewController(animated: true)
+                }
+                
+            } catch let err {
+                print(err)
+                fatalError()
+            }
+        }).disposed(by: disposeBag)
         return view
     }
     

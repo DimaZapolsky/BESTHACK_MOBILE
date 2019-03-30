@@ -34,7 +34,7 @@ class ConfirmationFooterView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(confirmationButton)
         NSLayoutConstraint.activate([
             confirmationButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
