@@ -20,21 +20,41 @@ BankInfo::BankInfo(string number) {
 }
 
 string BankInfo::getName() {
+    if (info == nullptr) {
+        cerr << "I DUNNO" << endl;
+        return "";
+    }
     return info["name"];
 }
 
 string BankInfo::getNameEn() {
+    if (info == nullptr) {
+        cerr << "I DUNNO" << endl;
+        return "";
+    }
     return info["nameEn"];
 }
 
 string BankInfo::getTextColor() {
+    if (info == nullptr) {
+        cerr << "I DUNNO" << endl;
+        return "";
+    }
     return info["text"];
 }
 
 string BankInfo::getBackgroundColor() {
+    if (info == nullptr) {
+        cerr << "I DUNNO" << endl;
+        return "";
+    }
     return info["backgroundColor"];
 }
 
 string BankInfo::getBackgroundLightness() {
+    if (info == nullptr) {
+        cerr << "I DUNNO" << endl;
+        return "";
+    }
     return info["backgroundLightness"];
 }
