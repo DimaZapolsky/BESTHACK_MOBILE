@@ -12,7 +12,7 @@
 Banks* Banks::instance = 0;
 
 json Banks::getBankByCardNumber(string number) {
-    if (number.length() != 10 && number.length() != 16) {
+    if (number.size() != 10 && number.size() != 16) {
         cerr << "- ebalo" << endl;
         return json();
     }

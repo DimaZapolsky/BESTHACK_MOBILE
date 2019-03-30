@@ -10,6 +10,7 @@
 		2AEA9417224F6274003DEB9E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AEA9416224F6274003DEB9E /* main.cpp */; };
 		2AEA941F224F62C1003DEB9E /* BankInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AEA941D224F62C1003DEB9E /* BankInfo.cpp */; };
 		2AEA9423224F6697003DEB9E /* Banks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AEA9421224F6697003DEB9E /* Banks.cpp */; };
+		2AEA9426224F88F9003DEB9E /* Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AEA9424224F88F9003DEB9E /* Card.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +33,8 @@
 		2AEA9420224F64FD003DEB9E /* json.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = json.hpp; sourceTree = "<group>"; };
 		2AEA9421224F6697003DEB9E /* Banks.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Banks.cpp; sourceTree = "<group>"; };
 		2AEA9422224F6697003DEB9E /* Banks.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Banks.hpp; sourceTree = "<group>"; };
+		2AEA9424224F88F9003DEB9E /* Card.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Card.cpp; sourceTree = "<group>"; };
+		2AEA9425224F88F9003DEB9E /* Card.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Card.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +73,8 @@
 				2AEA941E224F62C1003DEB9E /* BankInfo.hpp */,
 				2AEA9421224F6697003DEB9E /* Banks.cpp */,
 				2AEA9422224F6697003DEB9E /* Banks.hpp */,
+				2AEA9424224F88F9003DEB9E /* Card.cpp */,
+				2AEA9425224F88F9003DEB9E /* Card.hpp */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -133,6 +138,7 @@
 				2AEA9417224F6274003DEB9E /* main.cpp in Sources */,
 				2AEA9423224F6697003DEB9E /* Banks.cpp in Sources */,
 				2AEA941F224F62C1003DEB9E /* BankInfo.cpp in Sources */,
+				2AEA9426224F88F9003DEB9E /* Card.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
