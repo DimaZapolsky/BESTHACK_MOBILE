@@ -100,15 +100,12 @@ def process_card2(imagepath):
     #source_img.show()
 
 
-def main():
-    for i in range(1, len(sys.argv)):
-        main2.recognize(sys.argv[i])
-        process_card2('ch_' + sys.argv[i])
-
-        process_card(sys.argv[i])
-        print('kek')
-        str = os.popen('./main ch_' + sys.argv[i] + '.json').read()
-        return json.dumps(str)
+def main(filepath):
+    main2.recognize(filepath)
+    process_card2('ch_' + filepath)
+    process_card(filepath)
+    str = os.popen('./main ch_' + filepath + '.json').read()
+    return json.dumps(str)
 
 if __name__ == '__main__':
     print(main())
