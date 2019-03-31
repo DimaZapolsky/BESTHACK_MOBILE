@@ -110,16 +110,12 @@ def process_card(imagepath):
     return (False, '')
 
 
-def start(filepath):
+def main(filepath):
+    main2.recognize(filepath)
+    process_card2('ch_' + filepath)
     process_card(filepath)
-    str = os.popen('./main ' + filepath + '.json').read()
-    if "pizdec" in str:
-        str = str.split('\n')[1]
-    str = str.replace("null", '""')
-    json_data = json.loads(str)
-    if json_data["BankInfo"] == "":
-        json_data["BankInfo"] = {}
-    return json.dumps(json_data)
+    str = os.popen('./main ch_' + filepath + '.json').read()
+    return json.dumps(str)
 
 if __name__ == '__main__':
     print(main())

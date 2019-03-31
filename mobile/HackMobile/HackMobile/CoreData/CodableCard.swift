@@ -8,33 +8,62 @@
 import UIKit
 import Foundation
 
+class BankInfo: Decodable {
+    var backgroundColor: String? {
+        didSet {
+            if (backgroundColor!.count == 4) {
+                var newColor = "#"
+                for i in 1..<backgroundColor!.count {
+                    newColor += String( backgroundColor![ backgroundColor!.index(backgroundColor!.startIndex, offsetBy: i)])
+                    newColor += String(backgroundColor![ backgroundColor!.index(backgroundColor!.startIndex, offsetBy: i)])
+                }
+            }
+        }
+    }
+    var name: String?
+    
+    private enum CodingKeys: String, CodingKey {
+        case backgroundColor = "backgroundColor"
+        case name = "nameEn"
+    }
+}
+
 class CodableCard: Decodable {
     var cardHolderName: String?
-    var bankName: String?
+    var bankInfo: BankInfo?
     var expirationDate: Date?
     var color: String?
     var cardNumber: String?
 
-    init(holderName: String?, bankName: String?, expDate: Date?, cardNumber: String?, color: String?) {
+    init(holderName: String?, bankName: BankInfo?, expDate: Date?, cardNumber: String?, color: String?) {
         self.cardHolderName = holderName
-        self.bankName = bankName
+        self.bankInfo = bankName
         self.expirationDate = expDate
         self.cardNumber = cardNumber
         self.color = color
     }
+    init(holderName: String?, bankName: String?, expDate: Date?, cardNumber: String?, color: String?, backgroundColor: String?) {
+        self.cardHolderName = holderName
+        self.bankInfo = BankInfo()
+        self.expirationDate = expDate
+        self.cardNumber = cardNumber
+        self.color = color
+        self.bankInfo?.name = bankName
+        self.bankInfo?.backgroundColor = backgroundColor
+    }
     
     enum CodingKeys: String, CodingKey {
-        case cardHolderName = "cardHolderName"
-        case bankName = "bankName"
-        case expirationDate = "expirationDate"
+        case cardHolderName = "name"
+        case bankInfo = "BankInfo"
+        case expirationDate = "nva"
         case color = "color"
-        case cardNumber = "cardNumber"
+        case cardNumber = "CardNumber"
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.cardHolderName = try container.decode(String?.self, forKey: .cardHolderName)
-        self.bankName = try container.decode(String?.self, forKey: .bankName)
+        self.bankInfo = try container.decode(BankInfo?.self, forKey: .bankInfo)
         self.cardNumber = try container.decode(String?.self, forKey: .cardNumber)
         var dateStr = try container.decode(String?.self, forKey: .expirationDate)
         if dateStr == nil {
@@ -45,8 +74,11 @@ class CodableCard: Decodable {
             formatter.dateFormat = "dd/MM/yy"
             self.expirationDate = formatter.date(from: dateStr!)
         }
-        
-        self.color = try container.decode(String?.self, forKey: .color)
+        do {
+            self.color = try container.decode(String?.self, forKey: .color)
+        } catch let _ {
+            
+        }
         
     }
 }

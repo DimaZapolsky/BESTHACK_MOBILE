@@ -6,9 +6,10 @@
         <attribute name="cardNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="color" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="expirationDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="textColor" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CardEntity" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="CardEntity" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>

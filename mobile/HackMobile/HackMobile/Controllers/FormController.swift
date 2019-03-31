@@ -45,6 +45,12 @@ class ValidationFormController: FormViewController {
                 //self.navigationController?.popViewController(animated: true)
             }
         } else {
+            if let textColor = self.card?.color {
+            self.cardCoreData?.textColor = NSKeyedArchiver.archivedData(withRootObject: textColor)
+            }
+            if let color = self.card?.bankInfo?.backgroundColor {
+            self.cardCoreData?.color = NSKeyedArchiver.archivedData(withRootObject: color)
+            }
             StorageManager.shared.save()
             self.present(UIAlertController.genAlertController(title: "Success", message: "Successfully created new card", okActionCompletion: { (_) in
                 self.navigationController?.popViewController(animated: true)
@@ -73,10 +79,10 @@ class ValidationFormController: FormViewController {
                     })
                 <<< TextRow() {
             $0.title = "Bank Name"
-            $0.value = (card?.bankName ?? cardCoreData?.bankName) ?? ""
+            $0.value = (card?.bankInfo?.name ?? cardCoreData?.bankName) ?? ""
                     }.onChange({ (tr) in
                         if self.card != nil {
-                            self.card!.bankName = tr.value
+                            self.card!.bankInfo?.name = tr.value
                         } else {
                             self.cardCoreData?.bankName = tr.value
                         }

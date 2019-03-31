@@ -216,7 +216,9 @@ BankInfo * Card::getBankInfo() {
 
 json Card::toJSON() {
     json js = json();
-    js["BankInfo"] = bank->getInfo();
+    if (bank != NULL) {
+        js["BankInfo"] = bank->getInfo();
+    }
     js["CardNumber"] = cardNumber;
     js["name"] = name;
     js["nva"] = nva;

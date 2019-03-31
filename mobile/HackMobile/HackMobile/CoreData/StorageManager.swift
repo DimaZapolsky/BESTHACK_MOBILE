@@ -15,13 +15,15 @@ class StorageManager {
     
     private var stack = CoreDataStack()
     
-    func createCard(name: String?, bankName: String?, cardNumber: String?, expirationDate: Date?, color: UIColor? = nil) {
+    func createCard(name: String?, bankName: String?, cardNumber: String?, expirationDate: Date?, color: UIColor = UIColor.white, textColor: UIColor = UIColor.black) {
         let card = CardEntity.createCard(in: self.stack.mainContext)
         card?.bankName = bankName
         card?.cardNumber = cardNumber
         card?.cardHolderName = name
         card?.expirationDate = expirationDate
         card?.timestamp = Date()
+        card?.textColor = NSKeyedArchiver.archivedData(withRootObject: textColor)
+        card?.color = NSKeyedArchiver.archivedData(withRootObject: color)
         self.stack.performSave()
     }
     
@@ -36,12 +38,18 @@ class StorageManager {
     
     func createCard(decodedCard: CodableCard) {
         let card = CardEntity.createCard(in: self.stack.mainContext)
-        card?.bankName = decodedCard.bankName
+        card?.bankName = decodedCard.bankInfo?.name
+        
         card?.cardNumber = decodedCard.cardNumber
         card?.cardHolderName = decodedCard.cardHolderName
         card?.expirationDate = decodedCard.expirationDate
         card?.timestamp = Date()
-
+        if let backColor = decodedCard.bankInfo?.backgroundColor {
+            card?.color = NSKeyedArchiver.archivedData(withRootObject: UIColor.hexStringToUIColor(hex: backColor))
+        }
+        if let txtColor = decodedCard.color {
+        card?.textColor =  NSKeyedArchiver.archivedData(withRootObject: UIColor.hexStringToUIColor(hex: txtColor))
+        }
         if let color = decodedCard.color {
             card?.color = NSKeyedArchiver.archivedData(withRootObject: UIColor.hexStringToUIColor(hex: color)) 
         }
