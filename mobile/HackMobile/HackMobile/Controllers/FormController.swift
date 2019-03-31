@@ -73,10 +73,10 @@ class ValidationFormController: FormViewController {
                     })
                 <<< TextRow() {
             $0.title = "Bank Name"
-            $0.value = (card?.bankName ?? cardCoreData?.bankName) ?? ""
+            $0.value = (card?.bankInfo?.name ?? cardCoreData?.bankName) ?? ""
                     }.onChange({ (tr) in
                         if self.card != nil {
-                            self.card!.bankName = tr.value
+                            self.card!.bankInfo?.name = tr.value
                         } else {
                             self.cardCoreData?.bankName = tr.value
                         }

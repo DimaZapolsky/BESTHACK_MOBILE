@@ -140,9 +140,26 @@ class ViewController: UIViewController {
         self.present(cv, animated: true)*/
     }
     
+    lazy var loadingView: UIView = {
+        let view = UIView()
+        let iv = UIImageView()
+        iv.image = UIImage.gif(url: "https://media.giphy.com/media/EIZCMrLTkVJHa/giphy.gif")
+        view.addSubview(iv)
+        iv.contentMode = .scaleAspectFill
+        iv.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        return view
+    }()
+    
     @objc func recognize(_ sender: UIButton?) {
         sender?.blink()
         let data = self.imageView.image!.pngData()!
+        if loadingView.superview == nil {
+            self.view.addSubview(loadingView)
+            var topLeftX = UIScreen.main.bounds.width / 2 - 50
+            var topLeftY = UIScreen.main.bounds.height / 2 - 50
+            loadingView.frame = CGRect(x: topLeftX, y: topLeftY, width: 100, height: 100)
+        }
+        
         Alamofire.upload(multipartFormData: { (MultipartFormData) in
             MultipartFormData.append(data, withName: "file", fileName: "file.png", mimeType: "image/png")
         }, to: URL(string: "http://10.128.31.238:3333/")!) { (res) in
@@ -162,11 +179,13 @@ class ViewController: UIViewController {
                     if (!self.didCancel) {
                         print("Kek")
                         do {
-                            /*if let data = resp.data {
-                                let vc = ValidationFormController(card: try JSONDecoder().decode(CodableCard, from: data))
-                            }*/
-                            let vc = ValidationFormController(card: CodableCard(holderName: "Obama", bankName: "BABang", expDate: Date(), cardNumber: "1234 5678 9012", color: nil))
-                            self.navigationController?.pushViewController(vc, animated: true)
+                            if let data = resp.data {
+                                let vc = ValidationFormController(card: try JSONDecoder().decode(CodableCard.self, from: data))
+                                self.navigationController?.pushViewController(vc, animated: true)
+                            }
+                            self.loadingView.removeFromSuperview()
+                           /* let vc = ValidationFormController(card: CodableCard(holderName: "Obama", bankName: "BABang", expDate: Date(), cardNumber: "1234 5678 9012", color: nil, backgroundColor: "#fff"))*/
+                            
 
                         } catch let err {
                             print(err)

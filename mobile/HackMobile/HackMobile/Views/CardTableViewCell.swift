@@ -90,5 +90,15 @@ class CardTableViewCell: UITableViewCell {
             self.dateLabel.text = "Exp.Date: " + "Undefined"
         }
         self.cardNameLabel.text = "Card: " + (card.cardNumber ?? "Undefined")
+        if let color = card.color {
+            self.contentView.backgroundColor = (NSKeyedUnarchiver.unarchiveObject(with: color) as? UIColor ?? .white)
+        }
+        
+        if let color = card.textColor {
+            let color = (NSKeyedUnarchiver.unarchiveObject(with: color) as? UIColor ?? .black)
+            self.bankNameLabel.textColor = color
+            self.cardNameLabel.textColor = color
+            self.dateLabel.textColor = color
+        }
     }
 }

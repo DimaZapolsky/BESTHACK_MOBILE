@@ -16,6 +16,7 @@
 		AA1947C9224F6264003A6774 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1947C7224F6264003A6774 /* LaunchScreen.storyboard */; };
 		AA1947D4224F644F003A6774 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1947D3224F644F003A6774 /* CoreImage.framework */; };
 		AA1947D8224F6506003A6774 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1947D7224F6506003A6774 /* libc++.tbd */; };
+		AAA0026622505617009F0D62 /* Gifs.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0026522505617009F0D62 /* Gifs.swift */; };
 		AAB6D688224FA27600D91891 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D687224FA27600D91891 /* ConfirmationViewController.swift */; };
 		AAB6D68A224FA2D100D91891 /* ConfirmationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D689224FA2D100D91891 /* ConfirmationCell.swift */; };
 		AAB6D68C224FAEC700D91891 /* ConfirmationFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6D68B224FAEC700D91891 /* ConfirmationFooter.swift */; };
@@ -44,6 +45,7 @@
 		AA1947CA224F6264003A6774 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA1947D3224F644F003A6774 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		AA1947D7224F6506003A6774 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		AAA0026522505617009F0D62 /* Gifs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gifs.swift; sourceTree = "<group>"; };
 		AAB6D687224FA27600D91891 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		AAB6D689224FA2D100D91891 /* ConfirmationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationCell.swift; sourceTree = "<group>"; };
 		AAB6D68B224FAEC700D91891 /* ConfirmationFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationFooter.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				AAB6D69E224FD1DD00D91891 /* UIColorExtension.swift */,
 				AAB6D6A0224FD64E00D91891 /* UIAlertController.swift */,
 				AADECE3A2250122500DCAA52 /* Anchor.swift */,
+				AAA0026522505617009F0D62 /* Gifs.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAA0026622505617009F0D62 /* Gifs.swift in Sources */,
 				AAB6D68C224FAEC700D91891 /* ConfirmationFooter.swift in Sources */,
 				AAB6D68E224FB3A700D91891 /* Colors.swift in Sources */,
 				AAB6D69C224FD07800D91891 /* CodableCard.swift in Sources */,
