@@ -10,6 +10,7 @@ import json
 from imutils import contours
 import argparse
 import sys
+import main2
 
 
 def real_text_boxes(image, xoffset = 0, yoffset = 0, global_draw=None, show_seg=False, lang='eng'):
@@ -45,25 +46,33 @@ def create_image_crop(image, n, m):
 
 def transform(imagepath):
     image = cv2.imread(imagepath)
-    if len(image) > 600 or len(image[0]) > 600:
-        image = cv2.resize(image, None, fx=0.4, fy=0.4, interpolation=cv2.INTER_CUBIC)
+    cv2.imshow('image', image)
     filename = "{}.png".format(imagepath.split('.')[0] + "_processed")
-    image = cv2.resize(image, None, fx=1.3, fy=1.3, interpolation=cv2.INTER_CUBIC)
-    print(np.mean(image), end=" is a ")
+    #print(image)
+    image = cv2.resize(image, None, fx=1, fy=1, interpolation=cv2.INTER_CUBIC)
+    #print(np.mean(image), end=" is a ")
     if np.mean(image) < 127: ## BLACK TRANSFORM
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         gray = cv2.GaussianBlur(gray, (5, 5), 0)
+        cv2.imshow('gray', gray)
         cv2.imwrite(filename, gray)
     else:
-        print("Light Image")
+        #print("Light Image")
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         gray = cv2.bilateralFilter(gray,9,75,75)
         cv2.imwrite(filename, gray)
     return filename
 
 
-
 def process_card(imagepath):
+    json_data = main2.recognize(imagepath)
+    file2save = open('{}.json'.format(imagepath), "w")
+    file2save.write(json.dumps(json_data))
+    file2save.close()
+    print(json_data)
+
+
+def process_card2(imagepath):
     source_img = Image.open(transform(imagepath))
     global_drawer = ImageDraw.Draw(source_img)
     n, m = 1, 3
@@ -85,13 +94,15 @@ def process_card(imagepath):
             arr["x2"] = max(box[1], box[3])
             arr["y2"] = max(box[2], box[4])
             json_data["items"].append(arr)
-    file2save = open('d{}.json'.format(imagepath), "w")
+    file2save = open('({}).json'.format(imagepath), "w")
     file2save.write(json.dumps(json_data))
     file2save.close()
     source_img.show()
 
 
 def main():
+    main2.recognize('card_2.jpg')
+    process_card2('kek.jpg')
     for i in range(1, len(sys.argv)):
         process_card(sys.argv[i])
         os.system('./main ' + sys.argv[i] + '.json')
