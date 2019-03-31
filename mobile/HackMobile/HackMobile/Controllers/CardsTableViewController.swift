@@ -36,7 +36,7 @@ class CardsTableViewController: UITableViewController {
         self.tableView.register(CardTableViewCell.self, forCellReuseIdentifier: CardTableViewCell.cellId)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Card", style: .plain, target: self, action: #selector(handleAddButtonTap(_:)))
         self.fetchedResultController = StorageManager.shared.generateFRC()
-        self.tableView.rowHeight = 120
+        self.tableView.rowHeight = UIScreen.main.bounds.width / 2.3
 
 
     }

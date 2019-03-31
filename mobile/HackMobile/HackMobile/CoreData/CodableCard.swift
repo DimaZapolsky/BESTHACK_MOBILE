@@ -74,8 +74,11 @@ class CodableCard: Decodable {
             formatter.dateFormat = "dd/MM/yy"
             self.expirationDate = formatter.date(from: dateStr!)
         }
-        
-        self.color = try container.decode(String?.self, forKey: .color)
+        do {
+            self.color = try container.decode(String?.self, forKey: .color)
+        } catch let _ {
+            
+        }
         
     }
 }

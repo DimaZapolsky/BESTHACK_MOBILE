@@ -12,14 +12,14 @@ class CardTableViewCell: UITableViewCell {
     static let cellId = "CardCellId"
     lazy var cardNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = UIFont.systemFont(ofSize: 19)
         label.textColor = UIColor.black
         return label
     }()
 
     lazy var dateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = UIFont.systemFont(ofSize: 19)
         label.textColor = UIColor.black
         label.textAlignment = .right
         return label
@@ -27,7 +27,7 @@ class CardTableViewCell: UITableViewCell {
 
     lazy var bankNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: 19)
         label.textColor = UIColor.black
         label.setContentHuggingPriority(UILayoutPriority(252), for: .horizontal)
         return label
@@ -51,13 +51,15 @@ class CardTableViewCell: UITableViewCell {
         return sv
     }()
 
+    let contView = UIView()
+    
     override init(style: CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         //self.contentView.clipsToBounds = true
         //self.contentView.layer.cornerRadius = 10
         //self.contentView.backgroundColor = UIColor.init(red: 240.0/255, green: 240.0/255, blue: 240.0/255, alpha: 1.0)
         
-        let contView = UIView()
+        
         
         self.contentView.addSubview(contView)
         contView.clipsToBounds = true
@@ -91,7 +93,7 @@ class CardTableViewCell: UITableViewCell {
         }
         self.cardNameLabel.text = "Card: " + (card.cardNumber ?? "Undefined")
         if let color = card.color {
-            self.contentView.backgroundColor = (NSKeyedUnarchiver.unarchiveObject(with: color) as? UIColor ?? .white)
+            self.contView.backgroundColor = (NSKeyedUnarchiver.unarchiveObject(with: color) as? UIColor ?? .white)
         }
         
         if let color = card.textColor {

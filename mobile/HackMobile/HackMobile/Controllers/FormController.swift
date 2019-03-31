@@ -45,6 +45,12 @@ class ValidationFormController: FormViewController {
                 //self.navigationController?.popViewController(animated: true)
             }
         } else {
+            if let textColor = self.card?.color {
+            self.cardCoreData?.textColor = NSKeyedArchiver.archivedData(withRootObject: textColor)
+            }
+            if let color = self.card?.bankInfo?.backgroundColor {
+            self.cardCoreData?.color = NSKeyedArchiver.archivedData(withRootObject: color)
+            }
             StorageManager.shared.save()
             self.present(UIAlertController.genAlertController(title: "Success", message: "Successfully created new card", okActionCompletion: { (_) in
                 self.navigationController?.popViewController(animated: true)
