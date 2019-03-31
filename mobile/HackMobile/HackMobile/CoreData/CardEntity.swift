@@ -11,7 +11,7 @@ import CoreData
 
 extension CardEntity {
     static func createCard(in context: NSManagedObjectContext) -> CardEntity? {
-        guard let entity = NSEntityDescription.insertNewObject(forEntityName: "CartEntity", into: context) as? CardEntity else {
+        guard let entity = NSEntityDescription.insertNewObject(forEntityName: "CardEntity", into: context) as? CardEntity else {
             return nil
         }
         return entity

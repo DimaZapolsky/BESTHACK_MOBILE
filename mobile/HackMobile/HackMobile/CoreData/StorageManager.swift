@@ -25,6 +25,15 @@ class StorageManager {
         self.stack.performSave()
     }
     
+    func save() {
+        self.stack.performSave()
+    }
+    
+    func eraseCard(card: CardEntity) {
+        self.stack.mainContext.delete(card)
+        self.save()
+    }
+    
     func createCard(decodedCard: CodableCard) {
         let card = CardEntity.createCard(in: self.stack.mainContext)
         card?.bankName = decodedCard.bankName
@@ -36,6 +45,7 @@ class StorageManager {
         if let color = decodedCard.color {
             card?.color = NSKeyedArchiver.archivedData(withRootObject: UIColor.hexStringToUIColor(hex: color)) 
         }
+        self.stack.performSave()
     }
     
     func generateFRC() -> NSFetchedResultsController<CardEntity> {

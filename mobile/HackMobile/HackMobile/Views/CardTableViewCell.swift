@@ -9,7 +9,7 @@ import RxSwift
 import RxCocoa
 
 class CardTableViewCell: UITableViewCell {
-
+    static let cellId = "CardCellId"
     lazy var cardNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
@@ -21,6 +21,7 @@ class CardTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = UIColor.black
+        label.textAlignment = .right
         return label
     }()
 
@@ -52,13 +53,24 @@ class CardTableViewCell: UITableViewCell {
 
     override init(style: CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
-        self.contentView.addSubview(mainStackView)
+        //self.contentView.clipsToBounds = true
+        //self.contentView.layer.cornerRadius = 10
+        //self.contentView.backgroundColor = UIColor.init(red: 240.0/255, green: 240.0/255, blue: 240.0/255, alpha: 1.0)
+        
+        let contView = UIView()
+        
+        self.contentView.addSubview(contView)
+        contView.clipsToBounds = true
+        contView.layer.cornerRadius = 10
+        contView.backgroundColor = UIColor.init(red: 240.0/255, green: 240.0/255, blue: 240.0/255, alpha: 1.0)
+        contView.anchor(top: self.contentView.topAnchor, left: self.contentView.leftAnchor, bottom: self.contentView.bottomAnchor, right: self.contentView.rightAnchor, paddingTop: 5, paddingLeft: 10, paddingBottom: 5, paddingRight: 10, width: 0, height: 0)
+        
+        contView.addSubview(mainStackView)
         NSLayoutConstraint.activate([
-            self.mainStackView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 5),
-            self.mainStackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10),
-            self.mainStackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10),
-            self.mainStackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -5)
+            self.mainStackView.topAnchor.constraint(equalTo: contView.topAnchor, constant: 5),
+            self.mainStackView.leadingAnchor.constraint(equalTo: contView.leadingAnchor, constant: 10),
+            self.mainStackView.trailingAnchor.constraint(equalTo: contView.trailingAnchor, constant: -10),
+            self.mainStackView.bottomAnchor.constraint(equalTo: contView.bottomAnchor, constant: -5)
         ])
 
     }
@@ -71,7 +83,7 @@ class CardTableViewCell: UITableViewCell {
     func configure(card: CardEntity) {
         self.bankNameLabel.text = "Bank: " + (card.bankName ?? "Undefined")
         let formatter = DateFormatter()
-        formatter.dateFormat = "mm/yy"
+        formatter.dateFormat = "MM/yy"
         if let expDate = card.expirationDate {
             self.dateLabel.text = "Exp.Date: " + formatter.string(from: expDate)
         } else {
