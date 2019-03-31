@@ -31,10 +31,10 @@ from skimage import transform
 import warnings
 
 warnings.filterwarnings("ignore")
-import keras
+#import keras
 import copy
 
-loaded_model = keras.models.load_model('finalized_model_printed_CNN_280000_45_45_50_handwriten_charecters_fat.sav')
+#loaded_model = keras.models.load_model('finalized_model_printed_CNN_280000_45_45_50_handwriten_charecters_fat.sav')
 mapat = np.load('mapat.npy')
 
 
@@ -50,7 +50,7 @@ def gr_erosion(image):
     image2[:, :, 2] = scipy.ndimage.grey_erosion(image2[:, :, 2], (3, 3))
     return image2
 
-
+'''
 def get_symbol(picture):
     cnt = 0
     for i in range(picture.shape[0]):
@@ -81,7 +81,7 @@ def get_symbol(picture):
             mx = i
     # print(mapat[mx])
     return mapat[mx]
-
+'''
 
 def upd(image, cnt1, cnt2, n, shift):
     for ll in range(n):
@@ -133,9 +133,9 @@ def recognize(filepath):
 
     formules = upd(formules, cnt1=19, cnt2=10, n=4, shift=2)
 
-    skimage.io.imsave('kek.jpg', formules / 255)
+    skimage.io.imsave('ch_' + filepath, formules / 255)
     return
-
+'''
     used = [False for i in range(h * w)]
     comp = [0 for i in range(h * w)]
 
@@ -250,3 +250,4 @@ def recognize(filepath):
         zones["items"].append(arr)
     print(now1)
     return zones
+'''

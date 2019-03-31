@@ -32,6 +32,8 @@ public:
     string getNVA();
     string getCardNumber();
     string getSystem();
+    BankInfo * getBankInfo();
+    json toJSON();
 };
 
 #endif /* Card_hpp */

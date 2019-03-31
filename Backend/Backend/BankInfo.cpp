@@ -58,3 +58,7 @@ string BankInfo::getBackgroundLightness() {
     }
     return info["backgroundLightness"];
 }
+
+json BankInfo::getInfo() {
+    return info;
+}

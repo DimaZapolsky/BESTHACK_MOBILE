@@ -209,3 +209,17 @@ string Card::getCardNumber() {
 string Card::getSystem() {
     return system;
 }
+
+BankInfo * Card::getBankInfo() {
+    return bank;
+}
+
+json Card::toJSON() {
+    json js = json();
+    js["BankInfo"] = bank->getInfo();
+    js["CardNumber"] = cardNumber;
+    js["name"] = name;
+    js["nva"] = nva;
+    js["system"] = system;
+    return js;
+}

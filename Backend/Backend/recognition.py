@@ -46,7 +46,7 @@ def create_image_crop(image, n, m):
 
 def transform(imagepath):
     image = cv2.imread(imagepath)
-    cv2.imshow('image', image)
+    #cv2.imshow('image', image)
     filename = "{}.png".format(imagepath.split('.')[0] + "_processed")
     #print(image)
     image = cv2.resize(image, None, fx=1, fy=1, interpolation=cv2.INTER_CUBIC)
@@ -54,13 +54,13 @@ def transform(imagepath):
     if np.mean(image) < 127: ## BLACK TRANSFORM
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         gray = cv2.GaussianBlur(gray, (5, 5), 0)
-        cv2.imshow('gray', gray)
-        cv2.imwrite(filename, gray)
+        #cv2.imshow('gray', gray)
+        #cv2.imwrite(filename, gray)
     else:
         #print("Light Image")
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         gray = cv2.bilateralFilter(gray,9,75,75)
-        cv2.imwrite(filename, gray)
+        #cv2.imwrite(filename, gray)
     return filename
 
 
@@ -69,7 +69,7 @@ def process_card(imagepath):
     file2save = open('{}.json'.format(imagepath), "w")
     file2save.write(json.dumps(json_data))
     file2save.close()
-    print(json_data)
+    #print(json_data)
 
 
 def process_card2(imagepath):
@@ -84,10 +84,10 @@ def process_card2(imagepath):
     dh = source_img.height // m
     ys = set()
     for crop in crops:
-        print(pytesseract.image_to_string(crop[0]))
+        #print(pytesseract.image_to_string(crop[0]))
         for box in real_text_boxes(crop[0], xoffset=dw*crop[1], yoffset=dh*crop[2], global_draw=global_drawer):
             arr = {}
-            print(box)
+            #print(box)
             arr["str"] = box[0]
             arr["x1"] = min(box[1], box[3])
             arr["y1"] = min(box[2], box[4])
@@ -97,16 +97,18 @@ def process_card2(imagepath):
     file2save = open('{}.json'.format(imagepath), "w")
     file2save.write(json.dumps(json_data))
     file2save.close()
-    source_img.show()
+    #source_img.show()
 
 
 def main():
-    main2.recognize('card_2.jpg')
-    process_card2('kek.jpg')
     for i in range(1, len(sys.argv)):
-        process_card(sys.argv[i])
-        os.system('./main ' + sys.argv[i] + '.json')
+        main2.recognize(sys.argv[i])
+        process_card2('ch_' + sys.argv[i])
 
+        process_card(sys.argv[i])
+        print('kek')
+        str = os.popen('./main ch_' + sys.argv[i] + '.json').read()
+        return json.dumps(str)
 
 if __name__ == '__main__':
-    main()
+    print(main())

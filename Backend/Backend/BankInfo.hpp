@@ -24,6 +24,7 @@ public:
     BankInfo(string cardNumber);
     BankInfo() = default;
     
+    json getInfo();
     string getName();
     string getNameEn();
     string getBackgroundColor();
