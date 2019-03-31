@@ -94,7 +94,7 @@ def process_card2(imagepath):
             arr["x2"] = max(box[1], box[3])
             arr["y2"] = max(box[2], box[4])
             json_data["items"].append(arr)
-    file2save = open('({}).json'.format(imagepath), "w")
+    file2save = open('{}.json'.format(imagepath), "w")
     file2save.write(json.dumps(json_data))
     file2save.close()
     source_img.show()

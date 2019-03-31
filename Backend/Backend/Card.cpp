@@ -175,12 +175,19 @@ Card::Card(json boxesJSON) {
             continue;
         }
         if (!onlyDigits(str) && str.size() >= 8) {
+            if (getDist(str, "electron") <= 2)
+                continue;
+            if (name.find(' ') != -1 && str.find(' ') != -1)
+                continue;
+            if (name.size() > str.size())
+                continue;
             name = str;
         }
     }
     bank = new BankInfo(cardNumber);
-    //cerr << boxes << endl << endl << endl;
-    //cout << "_________________________________" << endl;
+    //cout << "__________" << endl;
+    //cout << boxes << endl;
+    //cout << "----------" << endl;
 }
 
 string Card::getBankName() {
