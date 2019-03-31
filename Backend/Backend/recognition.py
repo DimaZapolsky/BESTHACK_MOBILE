@@ -12,6 +12,14 @@ import argparse
 import sys
 import main2
 
+from skimage import filters
+from skimage.color.adapt_rgb import adapt_rgb, each_channel, hsv_value
+
+
+@adapt_rgb(each_channel)
+def sobel_each(image):
+    return filters.sobel(image)
+
 
 def real_text_boxes(image, xoffset = 0, yoffset = 0, global_draw=None, show_seg=False, lang='eng'):
     boxes = pytesseract.image_to_boxes(image, lang=lang, config='')
@@ -44,35 +52,39 @@ def create_image_crop(image, n, m):
     return crops
 
 
+def upd2(image):
+    h = image.shape[0]
+    w = image.shape[1]
+    summ = image.mean() + 12
+    image2 = np.zeros((h, w))
+    for i in range(h):
+        for j in range(w):
+            if (image[i][j].sum() > summ):
+                image2[i][j] = 0
+            else:
+                image2[i][j] = 255
+    return image2
+
+
 def transform(imagepath):
     image = cv2.imread(imagepath)
-    #cv2.imshow('image', image)
     filename = "{}.png".format(imagepath.split('.')[0] + "_processed")
-    #print(image)
-    image = cv2.resize(image, None, fx=1, fy=1, interpolation=cv2.INTER_CUBIC)
-    #print(np.mean(image), end=" is a ")
+    image = cv2.resize(image, None, fx=0.7, fy = 0.7, interpolation=cv2.INTER_LINEAR)
+    print(np.mean(image), end=" is a ")
     if np.mean(image) < 127: ## BLACK TRANSFORM
+        print("Dark Image")
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         gray = cv2.GaussianBlur(gray, (5, 5), 0)
-        #cv2.imshow('gray', gray)
-        #cv2.imwrite(filename, gray)
+        cv2.imwrite(filename, gray)
     else:
-        #print("Light Image")
+        print("Light Image")
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         gray = cv2.bilateralFilter(gray,9,75,75)
-        #cv2.imwrite(filename, gray)
+        cv2.imwrite(filename, gray)
     return filename
 
 
 def process_card(imagepath):
-    json_data = main2.recognize(imagepath)
-    file2save = open('{}.json'.format(imagepath), "w")
-    file2save.write(json.dumps(json_data))
-    file2save.close()
-    #print(json_data)
-
-
-def process_card2(imagepath):
     source_img = Image.open(transform(imagepath))
     global_drawer = ImageDraw.Draw(source_img)
     n, m = 1, 3
@@ -84,10 +96,8 @@ def process_card2(imagepath):
     dh = source_img.height // m
     ys = set()
     for crop in crops:
-        #print(pytesseract.image_to_string(crop[0]))
-        for box in real_text_boxes(crop[0], xoffset=dw*crop[1], yoffset=dh*crop[2], global_draw=global_drawer):
+        for box in real_text_boxes(crop[0], xoffset=dw*crop[1], yoffset=dh*crop[2]):
             arr = {}
-            #print(box)
             arr["str"] = box[0]
             arr["x1"] = min(box[1], box[3])
             arr["y1"] = min(box[2], box[4])
@@ -97,18 +107,19 @@ def process_card2(imagepath):
     file2save = open('{}.json'.format(imagepath), "w")
     file2save.write(json.dumps(json_data))
     file2save.close()
-    #source_img.show()
+    return (False, '')
 
 
-def main():
-    for i in range(1, len(sys.argv)):
-        main2.recognize(sys.argv[i])
-        process_card2('ch_' + sys.argv[i])
-
-        process_card(sys.argv[i])
-        print('kek')
-        str = os.popen('./main ch_' + sys.argv[i] + '.json').read()
-        return json.dumps(str)
+def start(filepath):
+    process_card(filepath)
+    str = os.popen('./main ' + filepath + '.json').read()
+    if "pizdec" in str:
+        str = str.split('\n')[1]
+    str = str.replace("null", '""')
+    json_data = json.loads(str)
+    if json_data["BankInfo"] == "":
+        json_data["BankInfo"] = {}
+    return json.dumps(json_data)
 
 if __name__ == '__main__':
     print(main())
